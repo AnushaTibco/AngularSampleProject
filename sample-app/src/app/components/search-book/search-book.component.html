@@ -1,0 +1,13 @@
+
+<mat-card>
+  <mat-card-title>Find a Book</mat-card-title>
+  <mat-card-content>
+  
+      <input matInput placeholder="Search for a book"   [(ngModel)]="query" (keyup)="search($event)">
+  
+    <mat-progress-spinner [class.show]="searching"></mat-progress-spinner>
+  </mat-card-content>
+</mat-card>
+<ng-container *ngIf="query!== ''">
+<app-books [searchList]="query"></app-books>
+</ng-container>

@@ -1,0 +1,35 @@
+<!-- <div class="books">
+  <table class="booksTable" *ngIf="books">
+    <tr class="booksTable__item-row">
+      <th class="item-row__title">Authors</th>
+      <th  class="item-row__title">Categories</th>
+      <th  class="item-row__title">Published Date</th>
+    </tr>
+    <tr *ngFor="let book of books" class="booksTable__item-row">   
+      <td class="item-row__info">{{ book.volumeInfo.authors ? book.volumeInfo.authors[0] : '---'}}</td>
+      <td  class="item-row__info">{{ book.volumeInfo.categories ? book.volumeInfo.categories[0] : '---'}}</td>
+      <td  class="item-row__info">{{ book.volumeInfo.publishedDate}}</td>
+    </tr>
+  </table>
+  </div> -->
+  <div class="books">
+  <ng-container *ngFor="let book of books" >
+  <mat-card>
+    <mat-card-title-group>
+      <img mat-card-sm-image *ngIf="book.volumeInfo.imageLinks" [src]="book.volumeInfo.imageLinks.smallThumbnail"/>
+      <mat-card-title>{{  book.volumeInfo.title ? book.volumeInfo.title : '---'  }}</mat-card-title>
+      <mat-card-subtitle *ngIf="subtitle">{{ book.volumeInfo.subtitle}}</mat-card-subtitle>
+    </mat-card-title-group>
+    <mat-card-content>
+      <p *ngIf="book.volumeInfo.description">{{ book.volumeInfo.description ? (book.volumeInfo.description) : '---' }}</p>
+    </mat-card-content>
+    <mat-card-footer>
+        <h5 mat-subheader>Written By:</h5>
+        <span>
+          {{book.volumeInfo.authors ? book.volumeInfo.authors[0] : '---'}}
+        </span>
+    </mat-card-footer>
+  </mat-card>
+</ng-container>
+
+</div>
